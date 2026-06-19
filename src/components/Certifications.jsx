@@ -5,6 +5,8 @@ import oracleAi from "../assets/oracle-ai.png";
 import oracleDevops from "../assets/oracle-devops.PNG";
 
 function Certifications() {
+  const isMobile = window.innerWidth < 768;
+
   const certifications = [
     {
       title: "Azure Administrator Associate",
@@ -44,7 +46,7 @@ function Certifications() {
       style={{
         background: "#08122f",
         color: "white",
-        padding: "100px 80px",
+        padding: isMobile ? "60px 20px" : "100px 80px",
       }}
     >
       <h4
@@ -52,6 +54,7 @@ function Certifications() {
           color: "#3b82f6",
           letterSpacing: "2px",
           marginBottom: "10px",
+          textAlign: isMobile ? "center" : "left",
         }}
       >
         CERTIFICATIONS
@@ -59,8 +62,9 @@ function Certifications() {
 
       <h1
         style={{
-          fontSize: "48px",
+          fontSize: isMobile ? "32px" : "48px",
           marginBottom: "20px",
+          textAlign: isMobile ? "center" : "left",
         }}
       >
         Professional Certifications
@@ -72,6 +76,9 @@ function Certifications() {
           maxWidth: "700px",
           lineHeight: "1.8",
           marginBottom: "60px",
+          textAlign: isMobile ? "center" : "left",
+          marginLeft: isMobile ? "auto" : "0",
+          marginRight: isMobile ? "auto" : "0",
         }}
       >
         Industry-recognized certifications in Cloud Computing,
@@ -81,9 +88,10 @@ function Certifications() {
       <div
         style={{
           display: "grid",
-          gridTemplateColumns:
-            "repeat(auto-fit,minmax(280px,1fr))",
-          gap: "30px",
+          gridTemplateColumns: isMobile
+            ? "1fr"
+            : "repeat(auto-fit,minmax(280px,1fr))",
+          gap: "25px",
         }}
       >
         {certifications.map((cert) => (
@@ -92,17 +100,23 @@ function Certifications() {
             style={{
               background: "#13214d",
               borderRadius: "20px",
-              padding: "30px",
+              padding: isMobile ? "20px" : "30px",
               textAlign: "center",
               border: "1px solid #1e40af",
               transition: "all 0.3s ease",
               cursor: "pointer",
+              minHeight: "320px",
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
             }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.transform =
-                "translateY(-10px)";
-              e.currentTarget.style.boxShadow =
-                "0 15px 40px rgba(37,99,235,0.25)";
+              if (!isMobile) {
+                e.currentTarget.style.transform =
+                  "translateY(-10px)";
+                e.currentTarget.style.boxShadow =
+                  "0 15px 40px rgba(37,99,235,0.25)";
+              }
             }}
             onMouseLeave={(e) => {
               e.currentTarget.style.transform =
@@ -111,28 +125,40 @@ function Certifications() {
             }}
           >
             <img
-  src={cert.image}
-  alt={cert.title}
-  style={{
-    width:
-      cert.title === "Oracle DevOps Professional"
-        ? "180px"
-        : "120px",
+              src={cert.image}
+              alt={cert.title}
+              style={{
+                width:
+                  cert.title ===
+                  "Oracle DevOps Professional"
+                    ? isMobile
+                      ? "140px"
+                      : "180px"
+                    : isMobile
+                    ? "100px"
+                    : "120px",
 
-    height:
-      cert.title === "Oracle DevOps Professional"
-        ? "180px"
-        : "120px",
-    objectFit: "contain",
-    marginBottom: "20px",
-  }}
-/>
+                height:
+                  cert.title ===
+                  "Oracle DevOps Professional"
+                    ? isMobile
+                      ? "140px"
+                      : "180px"
+                    : isMobile
+                    ? "100px"
+                    : "120px",
+
+                objectFit: "contain",
+                margin: "0 auto 20px",
+              }}
+            />
 
             <h3
               style={{
                 color: "#ffffff",
                 marginBottom: "10px",
-                minHeight: "60px",
+                minHeight: isMobile ? "auto" : "60px",
+                fontSize: isMobile ? "20px" : "22px",
               }}
             >
               {cert.title}
