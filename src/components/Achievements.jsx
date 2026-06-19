@@ -1,4 +1,6 @@
 function Achievements() {
+  const isMobile = window.innerWidth < 768;
+
   const achievements = [
     {
       number: "15+",
@@ -38,7 +40,7 @@ function Achievements() {
       style={{
         background: "#08122f",
         color: "white",
-        padding: "100px 80px",
+        padding: isMobile ? "60px 20px" : "100px 80px",
       }}
     >
       <h4
@@ -46,6 +48,7 @@ function Achievements() {
           color: "#3b82f6",
           letterSpacing: "2px",
           marginBottom: "10px",
+          textAlign: isMobile ? "center" : "left",
         }}
       >
         ACHIEVEMENTS
@@ -53,8 +56,9 @@ function Achievements() {
 
       <h1
         style={{
-          fontSize: "48px",
+          fontSize: isMobile ? "32px" : "48px",
           marginBottom: "20px",
+          textAlign: isMobile ? "center" : "left",
         }}
       >
         Key Achievements
@@ -65,7 +69,10 @@ function Achievements() {
           color: "#94a3b8",
           maxWidth: "700px",
           lineHeight: "1.8",
-          marginBottom: "60px",
+          marginBottom: "50px",
+          textAlign: isMobile ? "center" : "left",
+          marginLeft: isMobile ? "auto" : "0",
+          marginRight: isMobile ? "auto" : "0",
         }}
       >
         Highlights from my journey in Cloud Engineering,
@@ -75,9 +82,10 @@ function Achievements() {
       <div
         style={{
           display: "grid",
-          gridTemplateColumns:
-            "repeat(auto-fit,minmax(280px,1fr))",
-          gap: "30px",
+          gridTemplateColumns: isMobile
+            ? "1fr"
+            : "repeat(auto-fit,minmax(280px,1fr))",
+          gap: "25px",
         }}
       >
         {achievements.map((item) => (
@@ -86,16 +94,19 @@ function Achievements() {
             style={{
               background: "#13214d",
               borderRadius: "20px",
-              padding: "30px",
+              padding: isMobile ? "20px" : "30px",
               border: "1px solid #1e40af",
               transition: "0.3s",
               cursor: "pointer",
+              textAlign: isMobile ? "center" : "left",
             }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.transform =
-                "translateY(-10px)";
-              e.currentTarget.style.boxShadow =
-                "0 15px 40px rgba(37,99,235,0.25)";
+              if (!isMobile) {
+                e.currentTarget.style.transform =
+                  "translateY(-10px)";
+                e.currentTarget.style.boxShadow =
+                  "0 15px 40px rgba(37,99,235,0.25)";
+              }
             }}
             onMouseLeave={(e) => {
               e.currentTarget.style.transform =
@@ -106,7 +117,7 @@ function Achievements() {
             <h1
               style={{
                 color: "#60a5fa",
-                fontSize: "42px",
+                fontSize: isMobile ? "34px" : "42px",
                 marginBottom: "15px",
               }}
             >
@@ -116,6 +127,7 @@ function Achievements() {
             <h3
               style={{
                 marginBottom: "15px",
+                fontSize: isMobile ? "20px" : "24px",
               }}
             >
               {item.title}
@@ -125,6 +137,7 @@ function Achievements() {
               style={{
                 color: "#94a3b8",
                 lineHeight: "1.8",
+                fontSize: isMobile ? "14px" : "16px",
               }}
             >
               {item.desc}
