@@ -1,11 +1,13 @@
 function Contact() {
+  const isMobile = window.innerWidth < 768;
+
   return (
     <section
       id="contact"
       style={{
         background: "#08122f",
         color: "white",
-        padding: "100px 80px",
+        padding: isMobile ? "60px 20px" : "100px 80px",
         textAlign: "center",
       }}
     >
@@ -21,7 +23,7 @@ function Contact() {
 
       <h1
         style={{
-          fontSize: "42px",
+          fontSize: isMobile ? "32px" : "42px",
           marginBottom: "20px",
         }}
       >
@@ -45,43 +47,38 @@ function Contact() {
       <div
         style={{
           display: "grid",
-          gridTemplateColumns: "repeat(3,1fr)",
+          gridTemplateColumns: isMobile
+            ? "1fr"
+            : "repeat(3,1fr)",
           gap: "25px",
           maxWidth: "1100px",
           margin: "0 auto",
         }}
       >
-        {/* Email */}
         <div
           style={{
             background: "#13214d",
             padding: "35px",
             borderRadius: "18px",
+            border: "1px solid #1e3a8a",
           }}
         >
           <h2>📧</h2>
-
           <h3>Email</h3>
-
-          <p
-            style={{
-              color: "#94a3b8",
-            }}
-          >
+          <p style={{ color: "#94a3b8" }}>
             anmol.cloudops@gmail.com
           </p>
         </div>
 
-        {/* LinkedIn */}
         <div
           style={{
             background: "#13214d",
             padding: "35px",
             borderRadius: "18px",
+            border: "1px solid #1e3a8a",
           }}
         >
           <h2>💼</h2>
-
           <h3>LinkedIn</h3>
 
           <a
@@ -97,23 +94,18 @@ function Contact() {
           </a>
         </div>
 
-        {/* Availability */}
         <div
           style={{
             background: "#13214d",
             padding: "35px",
             borderRadius: "18px",
+            border: "1px solid #1e3a8a",
           }}
         >
           <h2>🚀</h2>
-
           <h3>Availability</h3>
 
-          <p
-            style={{
-              color: "#94a3b8",
-            }}
-          >
+          <p style={{ color: "#94a3b8" }}>
             Open to Cloud & DevOps Opportunities
           </p>
         </div>
@@ -129,8 +121,10 @@ function Contact() {
         <p
           style={{
             color: "#64748b",
+            fontSize: "14px",
           }}
         >
+          © 2026 Anmol Singh | Cloud Engineer | DevOps Engineer
         </p>
       </div>
     </section>
