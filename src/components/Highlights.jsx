@@ -1,6 +1,8 @@
 import { motion } from "framer-motion";
 
 function Highlights() {
+  const isMobile = window.innerWidth < 768;
+
   const highlights = [
     "Managed Azure Production Infrastructure",
     "Supported Business-Critical Applications",
@@ -18,7 +20,7 @@ function Highlights() {
       style={{
         background: "#0b1437",
         color: "white",
-        padding: "100px 80px",
+        padding: isMobile ? "60px 20px" : "100px 80px",
       }}
     >
       <h4
@@ -26,6 +28,7 @@ function Highlights() {
           color: "#3b82f6",
           letterSpacing: "2px",
           marginBottom: "10px",
+          textAlign: isMobile ? "center" : "left",
         }}
       >
         PROFESSIONAL HIGHLIGHTS
@@ -33,8 +36,9 @@ function Highlights() {
 
       <h1
         style={{
-          fontSize: "48px",
+          fontSize: isMobile ? "32px" : "48px",
           marginBottom: "20px",
+          textAlign: isMobile ? "center" : "left",
         }}
       >
         What I Bring To The Table
@@ -45,7 +49,10 @@ function Highlights() {
           color: "#94a3b8",
           maxWidth: "700px",
           lineHeight: "1.8",
-          marginBottom: "60px",
+          marginBottom: "50px",
+          textAlign: isMobile ? "center" : "left",
+          marginLeft: isMobile ? "auto" : "0",
+          marginRight: isMobile ? "auto" : "0",
         }}
       >
         Key strengths and accomplishments gained through
@@ -56,8 +63,9 @@ function Highlights() {
       <div
         style={{
           display: "grid",
-          gridTemplateColumns:
-            "repeat(auto-fit,minmax(400px,1fr))",
+          gridTemplateColumns: isMobile
+            ? "1fr"
+            : "repeat(auto-fit,minmax(400px,1fr))",
           gap: "20px",
         }}
       >
@@ -68,15 +76,15 @@ function Highlights() {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
             viewport={{ once: true }}
-            whileHover={{
+            whileHover={!isMobile ? {
               scale: 1.02,
               x: 10,
-            }}
+            } : {}}
             style={{
               background: "#13214d",
               border: "1px solid #1e40af",
               borderRadius: "18px",
-              padding: "22px",
+              padding: isMobile ? "18px" : "22px",
               display: "flex",
               alignItems: "center",
               gap: "15px",
@@ -85,15 +93,16 @@ function Highlights() {
           >
             <div
               style={{
-                width: "40px",
-                height: "40px",
+                width: isMobile ? "35px" : "40px",
+                height: isMobile ? "35px" : "40px",
+                minWidth: isMobile ? "35px" : "40px",
                 borderRadius: "50%",
                 background: "#2563eb",
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "center",
                 fontWeight: "bold",
-                fontSize: "18px",
+                fontSize: isMobile ? "16px" : "18px",
               }}
             >
               ✓
@@ -103,6 +112,8 @@ function Highlights() {
               style={{
                 margin: 0,
                 fontWeight: "500",
+                fontSize: isMobile ? "16px" : "20px",
+                lineHeight: "1.5",
               }}
             >
               {item}
