@@ -8,37 +8,15 @@ import jenkins from "../assets/jenkins.png";
 import python from "../assets/python.png";
 
 function TechStack() {
+  const isMobile = window.innerWidth < 768;
+
   const techs = [
-    {
-      name: "Azure",
-      logo: azure,
-      desc: "Cloud Platform",
-    },
-    {
-      name: "Terraform",
-      logo: terraform,
-      desc: "Infrastructure as Code",
-    },
-    {
-      name: "Docker",
-      logo: docker,
-      desc: "Containerization",
-    },
-    {
-      name: "Kubernetes",
-      logo: kubernetes,
-      desc: "Container Orchestration",
-    },
-    {
-      name: "Jenkins",
-      logo: jenkins,
-      desc: "CI/CD Automation",
-    },
-    {
-      name: "Python",
-      logo: python,
-      desc: "Automation & Scripting",
-    },
+    { name: "Azure", logo: azure, desc: "Cloud Platform" },
+    { name: "Terraform", logo: terraform, desc: "Infrastructure as Code" },
+    { name: "Docker", logo: docker, desc: "Containerization" },
+    { name: "Kubernetes", logo: kubernetes, desc: "Container Orchestration" },
+    { name: "Jenkins", logo: jenkins, desc: "CI/CD Automation" },
+    { name: "Python", logo: python, desc: "Automation & Scripting" },
   ];
 
   return (
@@ -46,15 +24,15 @@ function TechStack() {
       style={{
         background: "#08122f",
         color: "white",
-        padding: "100px 80px",
+        padding: isMobile ? "60px 20px" : "100px 80px",
       }}
     >
-      {/* HEADING */}
       <h4
         style={{
           color: "#3b82f6",
           letterSpacing: "3px",
           marginBottom: "10px",
+          textAlign: isMobile ? "center" : "left",
         }}
       >
         TECH STACK
@@ -62,8 +40,9 @@ function TechStack() {
 
       <h1
         style={{
-          fontSize: "48px",
+          fontSize: isMobile ? "32px" : "48px",
           marginBottom: "20px",
+          textAlign: isMobile ? "center" : "left",
         }}
       >
         Technologies I Work With
@@ -75,6 +54,9 @@ function TechStack() {
           maxWidth: "700px",
           lineHeight: "1.8",
           marginBottom: "50px",
+          textAlign: isMobile ? "center" : "left",
+          marginLeft: isMobile ? "auto" : "0",
+          marginRight: isMobile ? "auto" : "0",
         }}
       >
         Cloud, DevOps, Infrastructure Automation,
@@ -82,12 +64,14 @@ function TechStack() {
         throughout my professional journey.
       </p>
 
-      {/* PREMIUM STATS */}
+      {/* STATS */}
       <div
         style={{
-          display: "flex",
+          display: "grid",
+          gridTemplateColumns: isMobile
+            ? "1fr"
+            : "repeat(3,1fr)",
           gap: "20px",
-          flexWrap: "wrap",
           marginBottom: "50px",
         }}
       >
@@ -97,14 +81,14 @@ function TechStack() {
           { value: "15+", label: "Projects" },
         ].map((item) => (
           <motion.div
-            whileHover={{ y: -5 }}
+            whileHover={!isMobile ? { y: -5 } : {}}
             key={item.label}
             style={{
               background: "#13214d",
               border: "1px solid #1e3a8a",
               borderRadius: "16px",
-              padding: "18px 28px",
-              minWidth: "180px",
+              padding: "20px",
+              textAlign: "center",
               boxShadow:
                 "0 0 20px rgba(37,99,235,0.15)",
             }}
@@ -135,25 +119,28 @@ function TechStack() {
       <div
         style={{
           display: "grid",
-          gridTemplateColumns:
-            "repeat(auto-fit,minmax(220px,1fr))",
+          gridTemplateColumns: isMobile
+            ? "repeat(2,1fr)"
+            : "repeat(auto-fit,minmax(220px,1fr))",
           gap: "20px",
         }}
       >
         {techs.map((tech) => (
           <motion.div
             key={tech.name}
-            whileHover={{
-              y: -10,
-              scale: 1.03,
-            }}
-            transition={{
-              duration: 0.3,
-            }}
+            whileHover={
+              !isMobile
+                ? {
+                    y: -10,
+                    scale: 1.03,
+                  }
+                : {}
+            }
+            transition={{ duration: 0.3 }}
             style={{
               background: "#13214d",
               borderRadius: "18px",
-              padding: "22px",
+              padding: isMobile ? "18px" : "22px",
               textAlign: "center",
               border: "1px solid #1e3a8a",
               cursor: "pointer",
@@ -162,19 +149,17 @@ function TechStack() {
             }}
           >
             <motion.img
-              whileHover={{
+              whileHover={!isMobile ? {
                 rotate: 5,
                 scale: 1.1,
-              }}
+              } : {}}
               src={tech.logo}
               alt={tech.name}
               style={{
-                width: "60px",
-                height: "60px",
+                width: isMobile ? "50px" : "60px",
+                height: isMobile ? "50px" : "60px",
                 objectFit: "contain",
                 marginBottom: "15px",
-
-                // removes ugly white feeling
                 filter:
                   "drop-shadow(0 0 10px rgba(96,165,250,0.4))",
               }}
@@ -184,6 +169,7 @@ function TechStack() {
               style={{
                 marginBottom: "8px",
                 color: "#ffffff",
+                fontSize: isMobile ? "16px" : "20px",
               }}
             >
               {tech.name}
@@ -192,7 +178,7 @@ function TechStack() {
             <p
               style={{
                 color: "#94a3b8",
-                fontSize: "14px",
+                fontSize: isMobile ? "12px" : "14px",
                 margin: 0,
               }}
             >
